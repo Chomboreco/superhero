@@ -29,13 +29,12 @@ public class SuperHeroRepositoryImpl implements SuperHeroRepository{
 
     @Override
     public void update(SuperHero s) {
-        // TODO Auto-generated method stub
-        
+        Object[] params = {s.getBirthName(), s.getAlterName(), s.getBirthdayDate(), s.getOriginPlace(), s.getSuperPower(), s.getSuperheroId()};
+        jdbcTemplate.update("UPDATE superhero SET birthName = ?, alterName = ?, birthdayDate = ?, originPlace = ?, superPower = ? WHERE superheroId = ?", params);
     }
 
     @Override
     public void delete(Integer superHeroId) {
-        // TODO Auto-generated method stub
-        
+        jdbcTemplate.update("DELETE superhero WHERE superHeroId = ?", superHeroId);
     }
 }
